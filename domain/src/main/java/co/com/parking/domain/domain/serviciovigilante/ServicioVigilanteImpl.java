@@ -95,8 +95,7 @@ public class ServicioVigilanteImpl implements ServicioVigilante {
 			MovimientoVehiculo movimientoVehiculo = servicioVigilanteRepository.findMovimientoVehiculoByVehiculo(vehiculo);
 			movimientoVehiculo.setFechaFin(new Date());
 			//Obtenemos el tiempo de estancia en el parquadero
-			diaHora = servicioCalendario.obtenerDiasHoras(movimientoVehiculo.getFechaInicio(), movimientoVehiculo.getFechaFin());
-			valorTotal = getValorTotal(vehiculo, diaHora);
+			valorTotal = calcularValorPagar(vehiculo, movimientoVehiculo);
 			//Actualizamos la estancia en el parqueadero
 			movimientoVehiculo.setParqueado(false);
 			servicioVigilanteRepository.updateVehicule(movimientoVehiculo);
@@ -104,6 +103,14 @@ public class ServicioVigilanteImpl implements ServicioVigilante {
 			e.printStackTrace();
 		}
 		
+		return valorTotal;
+	}
+
+	private int calcularValorPagar(Vehiculo vehiculo, MovimientoVehiculo movimientoVehiculo) {
+		DiaHora diaHora;
+		int valorTotal;
+		diaHora = servicioCalendario.obtenerDiasHoras(movimientoVehiculo.getFechaInicio(), movimientoVehiculo.getFechaFin());
+		valorTotal = getValorTotal(vehiculo, diaHora);
 		return valorTotal;
 	}
 	
