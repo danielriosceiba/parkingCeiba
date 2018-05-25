@@ -1,29 +1,15 @@
 package co.com.parking.dominio.unitarias;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
-
-import java.util.Calendar;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import co.com.parking.domain.domain.servicioparqueadero.interfaces.ServicioParqueadero;
 import co.com.parking.domain.domain.serviciovehiculo.ServicioMoto;
 import co.com.parking.domain.domain.serviciovehiculo.interfaces.ServicioVehiculo;
-import co.com.parking.domain.domain.serviciovigilante.ServicioVigilanteImpl;
 import co.com.parking.domain.domain.serviciovigilante.interfaces.ServicioVigilante;
 import co.com.parking.domain.dto.CompositeResponse;
-import co.com.parking.persistence.domain.MovimientoVehiculo;
 import co.com.parking.persistence.domain.TipoVehiculo;
 import co.com.parking.persistence.domain.Vehiculo;
-import co.com.parking.persistence.repository.serviciovigilante.interfaces.ServicioVigilanteRepository;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 public class ServicioVigilanteImplTest {

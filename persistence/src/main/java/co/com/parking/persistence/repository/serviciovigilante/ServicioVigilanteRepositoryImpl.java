@@ -66,9 +66,9 @@ public class ServicioVigilanteRepositoryImpl extends BaseRepository implements S
 	public MovimientoVehiculo findMovimientoVehiculoByVehiculo(Vehiculo vehiculo) {
 		MovimientoVehiculoEntity movimientoVehiculoEntity = null; 
 		
-		String sqlQuery = "select * from movimiento_vehiculo mv inner join vehiculo ve on mv.id_vehiculo = ve.id_vehiculo  where ve.id_vehiculo = ? and mv.parqueado = true";
+		String sqlQuery = "select * from movimiento_vehiculo mv inner join vehiculo ve on mv.id_vehiculo = ve.id_vehiculo  where ve.placa = ? and mv.parqueado = true";
 		Query query = entityManager.createNativeQuery(sqlQuery, MovimientoVehiculoEntity.class);
-		query.setParameter(1, vehiculo.getIdVehiculo()); 
+		query.setParameter(1, vehiculo.getPlaca()); 
 		movimientoVehiculoEntity = (MovimientoVehiculoEntity) query.getSingleResult();
 		return movimientoVehiculoConverter.entityToDomain(movimientoVehiculoEntity);
 	}
@@ -79,8 +79,10 @@ public class ServicioVigilanteRepositoryImpl extends BaseRepository implements S
 	 */
 	@Transactional
 	public boolean updateVehicule(MovimientoVehiculo movimientoVehiculo) {
-		MovimientoVehiculoEntity movimientoVehiculoEntity = movimientoVehiculoConverter.domainToEntity(movimientoVehiculo);
-		this.entityManager.persist(movimientoVehiculoEntity);
+		String sqlQuery = "update movimiento_vehiculo set parqueado = false where id_movimiento_vehiculo = ?";
+		Query query = entityManager.createNativeQuery(sqlQuery, MovimientoVehiculoEntity.class);
+		query.setParameter(1, movimientoVehiculo.getIdMovimientoVehiculo()); 
+		query.executeUpdate();
 		return true;
 	}
 }

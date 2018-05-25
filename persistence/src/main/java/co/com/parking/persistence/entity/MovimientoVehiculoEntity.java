@@ -25,7 +25,7 @@ public class MovimientoVehiculoEntity {
 	@Column(name = "id_movimiento_vehiculo", unique = true)
 	private int idMovimientoVehiculo;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id_vehiculo")
 	private VehiculoEntity vehiculo;
 	

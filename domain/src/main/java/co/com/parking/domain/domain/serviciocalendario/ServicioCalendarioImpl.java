@@ -25,7 +25,7 @@ public class ServicioCalendarioImpl implements ServicioCalendario {
 		long resultado = fechaFin.getTime() - fechaInicio.getTime();
 		int minutos = (int) TimeUnit.MINUTES.convert(resultado, TimeUnit.MILLISECONDS);
 
-		if (minutos % MINUTOS_HORA > 0) {
+		if (minutos == 0 || minutos % MINUTOS_HORA > 0) {
 			horasRestadas = (int) TimeUnit.HOURS.convert(minutos, TimeUnit.MINUTES) + REDONDEO_HORA;
 		} else {
 			horasRestadas = (int) TimeUnit.HOURS.convert(minutos, TimeUnit.MINUTES);

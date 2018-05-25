@@ -45,7 +45,6 @@ public class ServicioVigilanteImpl implements ServicioVigilante {
 	 * @see co.com.parking.domain.domain.serviciovigilante.interfaces.ServicioVigilante#saveVehicule(co.com.parking.persistence.domain.Vehiculo)
 	 */
 	public CompositeResponse saveVehicule(Vehiculo vehiculo) {
-		MovimientoVehiculo movimientoVehiculo = null;
 		CompositeResponse response = null;
 		try {
 			if(servicioVehiculo.validatePlacasPorFecha(vehiculo.getPlaca(), Calendar.getInstance())) {
