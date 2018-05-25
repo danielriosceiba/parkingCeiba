@@ -1,5 +1,19 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.13.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.5
 version = '1.0'
@@ -21,8 +35,16 @@ dependencies {
 }
 
 test {
-    systemProperties 'property': 'value'
+// systemProperties 'property': 'value'
+jacoco {
+append = false
+destinationFile = file("jacoco/jacocoTest.exec")
 }
+reports.junitXml.destination = file ("jacoco/test-results")
+}
+
+jacocoTestReport.dependsOn(test)
+
 
 uploadArchives {
     repositories {
@@ -31,3 +53,5 @@ uploadArchives {
        }
     }
 }
+
+

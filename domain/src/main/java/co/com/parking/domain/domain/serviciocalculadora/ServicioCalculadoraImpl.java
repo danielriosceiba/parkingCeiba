@@ -11,11 +11,8 @@ public class ServicioCalculadoraImpl implements ServicioCalculadora{
 	
 	public int calcularDiasHoras(DiaHora diaHora, int valorhora, int valorDia) {
 		int valorTotal = 0;
-		try {
-			valorTotal = diaHora.getDias() * valorDia + diaHora.getHoras() *valorhora;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
+		valorTotal = diaHora.getDias() * valorDia + diaHora.getHoras() *valorhora;
+		
 		return valorTotal;
 	}
 

@@ -5,12 +5,15 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 
 @Entity
@@ -22,7 +25,7 @@ public class MovimientoVehiculoEntity {
 	@Column(name = "id_movimiento_vehiculo", unique = true)
 	private int idMovimientoVehiculo;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "id_vehiculo")
 	private VehiculoEntity vehiculo;
 	

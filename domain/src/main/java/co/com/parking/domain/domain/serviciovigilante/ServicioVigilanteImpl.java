@@ -1,5 +1,6 @@
 package co.com.parking.domain.domain.serviciovigilante;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -47,15 +48,11 @@ public class ServicioVigilanteImpl implements ServicioVigilante {
 		MovimientoVehiculo movimientoVehiculo = null;
 		CompositeResponse response = null;
 		try {
-			if(servicioVehiculo.validatePlacas(vehiculo.getPlaca())) {
-				if(servicioParqueadero.cantidadVehiculos(vehiculo.getTipoVehiculo())) {
-					servicioVigilanteRepository.saveVehicule(vehiculo);
-					
-					movimientoVehiculo = new MovimientoVehiculo();
-					movimientoVehiculo.setVehiculo(vehiculo);
-					movimientoVehiculo.setFechaInicio(new Date());
-					movimientoVehiculo.setParqueado(true);
-					servicioVigilanteRepository.saveMovimientoVehicule(movimientoVehiculo);
+			if(servicioVehiculo.validatePlacasPorFecha(vehiculo.getPlaca(), Calendar.getInstance())) {
+				if(servicioParqueadero.permitirParqueo(vehiculo.getTipoVehiculo())) {
+					guardarVehiculo(vehiculo);
+					//Almacena el movimiento del vehiculo
+					guardarMovimientoVehiculo(vehiculo);
 					
 					response = new CompositeResponse(CompositeResponse.SUCCESS,MensajesRespuesta.ALMACENAMIENTO_VEHICULO_EXITOSO);	
 				}else {
@@ -69,6 +66,19 @@ public class ServicioVigilanteImpl implements ServicioVigilante {
 			e.printStackTrace();
 		}
 		return response;
+	}
+
+	private void guardarVehiculo(Vehiculo vehiculo) {
+		servicioVigilanteRepository.saveVehicule(vehiculo);
+	}
+
+	private void guardarMovimientoVehiculo(Vehiculo vehiculo) {
+		MovimientoVehiculo movimientoVehiculo;
+		movimientoVehiculo = new MovimientoVehiculo();
+		movimientoVehiculo.setVehiculo(vehiculo);
+		movimientoVehiculo.setFechaInicio(new Date());
+		movimientoVehiculo.setParqueado(true);
+		servicioVigilanteRepository.saveMovimientoVehicule(movimientoVehiculo);
 	}
 
 	/*

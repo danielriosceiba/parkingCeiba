@@ -1,5 +1,7 @@
 package co.com.parking.domain.domain.serviciovehiculo;
 
+import java.util.Calendar;
+
 import org.springframework.context.annotation.Primary;
 
 import co.com.parking.domain.domain.serviciovehiculo.abst.ServicioVehiculoAbst;

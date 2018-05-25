@@ -33,6 +33,7 @@ public class ServicioVigilanteRepositoryImpl extends BaseRepository implements S
 	public boolean saveVehicule(Vehiculo vehiculo) {
 		VehiculoEntity vehiculoEntity = vehiculoConverter.domainToEntity(vehiculo);
 		this.entityManager.persist(vehiculoEntity);
+		entityManager.flush();
 		return true;
 	}
 	
@@ -44,6 +45,7 @@ public class ServicioVigilanteRepositoryImpl extends BaseRepository implements S
 	public boolean saveMovimientoVehicule(MovimientoVehiculo movimientoVehiculo) {
 		MovimientoVehiculoEntity movimientoVehiculoEntity = movimientoVehiculoConverter.domainToEntity(movimientoVehiculo);
 		this.entityManager.persist(movimientoVehiculoEntity);
+		entityManager.flush();
 		return true;
 	}
 	

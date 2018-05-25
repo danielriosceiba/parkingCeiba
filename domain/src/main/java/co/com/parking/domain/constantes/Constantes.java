@@ -13,8 +13,8 @@ public class Constantes {
 	public static class MensajesRespuesta{
 		public static final String ALMACENAMIENTO_VEHICULO_EXITOSO = "El vehiculo fue almacenado con exito";
 		public static final String RETIRAR_VEHICULO_EXITOSO = "El vehiculo fue retirado exitosamente";
-		public static final String NO_FUE_POSIBLE_ALMACENAR_LA_INFORMACION = "No fue posible almacenar la informaciÃ³n del vehiculo";
-		public static final String PLACA_INVALIDA_X_DIAS = "No fue posible almacenar la informacion del vehiculo, las placas que empicen por la letra A solo pueden ingresar al parqueadero los días Domingo y Lunes";
+		public static final String NO_FUE_POSIBLE_ALMACENAR_LA_INFORMACION = "No fue posible almacenar la informacionn del vehiculo";
+		public static final String PLACA_INVALIDA_X_DIAS = "No fue posible almacenar la informacion del vehiculo, las placas que empicen por la letra A solo pueden ingresar al parqueadero los dias Domingo y Lunes";
 		public static final String PARQUEADERO_LLENO = "No fue posible almacenar la informacion del vehiculo, No hay disponibilidad de parqueaderos";
 		public static final String ERROR_SISTEMA = "Se ha presentado un error en el sistema.";
 	}

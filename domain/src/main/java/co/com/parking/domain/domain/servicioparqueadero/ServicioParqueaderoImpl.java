@@ -18,7 +18,7 @@ public class ServicioParqueaderoImpl implements ServicioParqueadero{
 		this.servicioParqueaderoRepository = servicioParqueaderoRepository;
 	}
 
-	public boolean cantidadVehiculos(TipoVehiculo tipoVehiculo) {
+	public boolean permitirParqueo(TipoVehiculo tipoVehiculo) {
 		int cantidad = 0;
 		boolean retorno = false;
 		

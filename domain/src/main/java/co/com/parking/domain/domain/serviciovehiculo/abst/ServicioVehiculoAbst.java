@@ -12,12 +12,11 @@ public abstract class ServicioVehiculoAbst implements ServicioVehiculo{
 	private final int FIN_CADENA_PLACA = 1;
 	private final String INDICATIVO_PLACA = "A";
 	
-	public boolean validatePlacas(String placa) {
+	public boolean validatePlacasPorFecha(String placa, Calendar calendar) {
 		boolean retorno = true;
-		Calendar calendar = Calendar.getInstance();
 		 
 		if(placa.substring(INICIO_CADENA, FIN_CADENA_PLACA).equalsIgnoreCase(INDICATIVO_PLACA)) {
-			if(calendar.DAY_OF_WEEK == Calendar.SUNDAY || calendar.DAY_OF_WEEK == Calendar.MONDAY) {
+			if(calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
 				retorno = true;
 			}else {
 				retorno = false;

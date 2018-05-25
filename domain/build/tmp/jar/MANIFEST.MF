@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+provider: my cool company
+Implementation-Title: Gradle Quickstart
+Implementation-Version: 1.0
+
